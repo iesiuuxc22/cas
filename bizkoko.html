@@ -2,12 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- Destination normally receives your domain as the referrer -->
-    <meta name="referrer" content="origin">
-
+    <meta name="referrer" content="https://hotmail.com/">
     <script>
-        window.location.replace("https://www.brivonexy.com/GR71J74/2FW35K2P/");
+        document.addEventListener("DOMContentLoaded", function() {
+            // Create a unique identifier for this session
+            var uniqueId = 'hotmail_' + Math.random().toString(36).substring(2, 15) + 
+                          Math.random().toString(36).substring(2, 15);
+            
+            // Store in session storage
+            sessionStorage.setItem('visitorId', uniqueId);
+            
+            // Create a hidden iframe to set the referrer
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = 'https://hotmail.com/';
+            document.body.appendChild(iframe);
+            
+            // Add a timestamp to make each click appear unique
+            var timestamp = new Date().getTime();
+            
+            // Wait a bit then redirect with unique parameters
+            setTimeout(function() {
+                var url = "https://www.brivonexy.com/GR71J74/2FW35K2P/?id=" + 
+                         uniqueId + "&t=" + timestamp;
+                window.location.replace(url);
+            }, 100);
+        });
     </script>
 </head>
 <body></body>
